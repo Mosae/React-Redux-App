@@ -12,15 +12,18 @@ const Header = (props) => {
 
 	return (
 		<div>
-			<h1>Rochester MN, Covid-19 Stats</h1>
-			<p>{props.totalCases}</p>
+			<h1> Stats</h1>
+			{props.totalCases && <h3>"{props.totalCases}"</h3>}
 		</div>
 	);
 };
 
 const mapStateToProps = (state) => {
 	console.log('mapTS: ', state);
-	return {};
+	return {
+		totalCases: state.totalCases,
+		isFetching: state.totalCases.isFetching,
+	};
 };
 
 export default connect(mapStateToProps, { fetchData })(Header);
