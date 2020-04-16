@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 
 import { fetchData } from '../actions/dataActions';
 
-const MainHeader = (props) => {
-	console.log(props);
+const Header = (props) => {
+	console.log('header props', props);
 
 	useEffect(() => {
-		//props.fetchData();
+		props.fetchData();
 	}, []);
 
 	return (
 		<div>
 			<h1>Rochester MN, Covid-19 Stats</h1>
+			<p>{props.totalCases}</p>
 		</div>
 	);
 };
@@ -22,4 +23,4 @@ const mapStateToProps = (state) => {
 	return {};
 };
 
-export default connect(mapStateToProps, { fetchData })(MainHeader);
+export default connect(mapStateToProps, { fetchData })(Header);
