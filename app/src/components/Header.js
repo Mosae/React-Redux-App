@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import { fetchData } from '../actions/dataActions';
 
@@ -6,7 +7,7 @@ const MainHeader = (props) => {
 	console.log(props);
 
 	useEffect(() => {
-		props.fetchData();
+		//props.fetchData();
 	}, []);
 
 	return (
@@ -16,4 +17,9 @@ const MainHeader = (props) => {
 	);
 };
 
-export default MainHeader;
+const mapStateToProps = (state) => {
+	console.log('mapTS: ', state);
+	return {};
+};
+
+export default connect(mapStateToProps, { fetchData })(MainHeader);

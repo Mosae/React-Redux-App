@@ -4,8 +4,8 @@ const initialState = {
 	isFetching: false,
 	error: '',
 };
-
-export const dataReducer = (state = initialState, action) => {
+const dataReducer = (state = initialState, action) => {
+	console.log(state);
 	switch (action.type) {
 		case 'FETCH_CASES':
 			return {
@@ -16,3 +16,5 @@ export const dataReducer = (state = initialState, action) => {
 			return state;
 	}
 };
+
+export default dataReducer;

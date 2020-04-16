@@ -14,6 +14,10 @@ export const fetchData = () => {
 			})
 			.catch((err) => {
 				console.log('Failed:', err);
+				dispatch({
+					type: 'FETCH_CASES_FAILURE',
+					payload: 'Error',
+				});
 			});
 	};
 };
