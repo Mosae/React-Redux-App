@@ -8,16 +8,19 @@ export const fetchData = () => {
 	return (dispatch) => {
 		dispatch({ type: 'FETCH_CASES_START' });
 		axios
-			.get('https://api.kanye.rest')
+			.get('https://api.covid19api.com/summary')
 			.then((res) => {
-				dispatch({ type: 'FETCH_CASES_SUCCESS', payload: res.data.quote });
-				console.log('Success:', res.data.quote);
+				console.log('Success:', res.data);
+				dispatch({
+					type: 'FETCH_CASES_SUCCESS',
+					payload: res.data.Global.TotalConfirmed,
+				});
 			})
 			.catch((err) => {
 				console.log('Failed:', err);
 				dispatch({
 					type: 'FETCH_CASES_FAILURE',
-					payload: 'Error',
+					payload: ` ${err}`,
 				});
 			});
 	};

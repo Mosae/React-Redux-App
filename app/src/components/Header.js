@@ -4,16 +4,14 @@ import { connect } from 'react-redux';
 import { fetchData } from '../actions/dataActions';
 
 const Header = (props) => {
-	console.log('header props', props);
-
 	useEffect(() => {
 		props.fetchData();
 	}, []);
 
 	return (
 		<div>
-			<h1> Stats</h1>
-			{props.totalCases && <h3>"{props.totalCases}"</h3>}
+			<h1> World Wide Covid-19 Stats</h1>
+			Total Cases: {props.totalCases && <h3>"{props.totalCases}"</h3>}
 		</div>
 	);
 };
@@ -23,6 +21,7 @@ const mapStateToProps = (state) => {
 	return {
 		totalCases: state.totalCases,
 		isFetching: state.totalCases.isFetching,
+		error: state.totalCases.error,
 	};
 };
 
